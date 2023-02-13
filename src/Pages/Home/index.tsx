@@ -1,3 +1,9 @@
+import { InfoUser } from './Components/InfoUser'
+import { ContainerHome } from './styles'
 export function Home() {
-  return <h1>Home</h1>
+  return (
+    <ContainerHome>
+      <InfoUser />
+    </ContainerHome>
+  )
 }

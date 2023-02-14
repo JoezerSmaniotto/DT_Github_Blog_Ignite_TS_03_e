@@ -23,4 +23,20 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-size: 1rem;
     }
+
+    /* width */
+    ::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: ${(props) => props.theme['base-profile']};
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.blue};
+    }
  `

@@ -2,10 +2,8 @@ import styled, { css } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const InfoUserContainer = styled.div`
-  max-width: 54rem;
   width: 100%;
   display: flex;
-  margin: 0 auto;
   margin-top: -6rem;
   background-color: ${(props) => props.theme['base-profile']};
   padding: 2rem 2.5rem;
@@ -21,6 +19,7 @@ export const InfoUserContainer = styled.div`
   @media screen and (max-width: 767px) {
     flex-direction: column;
     align-items: center;
+    padding: 1rem 1.5rem;
   }
 `
 
@@ -101,6 +100,16 @@ export const InfoUserContent = styled.div`
     }
     footer {
       margin-top: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 374px) {
+    footer {
+      flex-direction: column;
+
+      & > div + div {
+        margin-left: 0;
+      }
     }
   }
 `

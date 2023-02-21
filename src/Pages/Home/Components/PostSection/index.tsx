@@ -54,17 +54,12 @@ export function PostSection() {
   })
 
   const handleSearchPosts = (data: SearchFormInputs) => {
-    if (data.query !== '') {
-      const resul = posts.filter((post) =>
-        post.title.toUpperCase().includes(data.query.toUpperCase()),
-      )
-      if (resul.length > 0) {
-        setPostsSearch(resul)
-      }
-    } else {
-      setPostsSearch([])
-    }
+    const dataSearch = posts.filter((post) =>
+      post.title.toUpperCase().includes(data.query.toUpperCase()),
+    )
+    setPostsSearch(dataSearch)
   }
+
   return (
     <PostSectionContainer>
       <SearchSection>

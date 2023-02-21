@@ -28,6 +28,7 @@ type SearchFormInputs = zod.infer<typeof searchFormSchema>
 
 export function PostSection() {
   const [posts, setPosts] = useState<IPost[]>([])
+  const [postsSearch, setPostsSearch] = useState<IPost[]>([])
   const [postsCounter, setPostsCounter] = useState(0)
 
   async function fetchPosts(query = '') {
@@ -53,7 +54,16 @@ export function PostSection() {
   })
 
   const handleSearchPosts = (data: SearchFormInputs) => {
-    console.log(data)
+    if (data.query !== '') {
+      const resul = posts.filter((post) =>
+        post.title.toUpperCase().includes(data.query.toUpperCase()),
+      )
+      if (resul.length > 0) {
+        setPostsSearch(resul)
+      }
+    } else {
+      setPostsSearch([])
+    }
   }
   return (
     <PostSectionContainer>
@@ -85,10 +95,13 @@ export function PostSection() {
         />
       </ContainerForm>
       <ContainerPosts>
-        {posts &&
-          posts.map((post) => (
-            <PostCard key={`${post.title}-${post.number}`} post={post} />
-          ))}
+        {posts.length > 0 && postsSearch.length === 0
+          ? posts.map((post) => (
+              <PostCard key={`${post.title}-${post.number}`} post={post} />
+            ))
+          : postsSearch.map((post) => (
+              <PostCard key={`${post.title}-${post.number}`} post={post} />
+            ))}
       </ContainerPosts>
     </PostSectionContainer>
   )
